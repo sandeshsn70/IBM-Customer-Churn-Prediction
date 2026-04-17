@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="result-container">
+
+    <!-- RESULT CARD -->
+    <div class="result-card">
+        <h1>Prediction Result</h1>
+
+        <div class="status">
+            {{ result }}
+        </div>
+    </div>
+
+    <!-- ANALYSIS SECTION -->
+    <div class="analysis">
+
+        <h2>Customer Risk Analysis</h2>
+
+        <div class="analysis-grid">
+
+            <div class="box">
+                <h3>📊 Risk Level</h3>
+                <p id="risk-level"></p>
+            </div>
+
+            <div class="box">
+                <h3>📈 Business Insight</h3>
+                <p>Customers with lower tenure and higher charges are more likely to churn.</p>
+            </div>
+
+            <div class="box">
+                <h3>💡 Recommendation</h3>
+                <p>Offer discounts or long-term plans to retain high-risk customers.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- VISUAL FEEDBACK -->
+    <div class="visual">
+        <h2>Churn Indicator</h2>
+
+        <div class="progress-bar">
+            <div class="progress" id="progress-bar"></div>
+        </div>
+    </div>
+
+    <!-- BUTTON -->
+    <div class="back-btn">
+        <a href="/">⬅ Back to Dashboard</a>
+    </div>
+
+</div>
+
+<script>
+    let resultText = "{{ result }}";
+
+    let risk = document.getElementById("risk-level");
+    let bar = document.getElementById("progress-bar");
+
+    if (resultText.includes("High Risk")) {
+        risk.innerText = "High";
+        risk.style.color = "red";
+        bar.style.width = "80%";
+        bar.style.background = "red";
+    } else {
+        risk.innerText = "Low";
+        risk.style.color = "green";
+        bar.style.width = "30%";
+        bar.style.background = "green";
+    }
+</script>
+
+{% endblock %}

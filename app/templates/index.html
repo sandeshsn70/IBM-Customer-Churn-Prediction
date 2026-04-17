@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 class="title">Customer Churn Intelligence</h1>
+
+<!-- STATS -->
+<div class="cards">
+    <div class="card glow">
+        <h3>Dataset</h3>
+        <p>IBM Telco</p>
+    </div>
+
+    <div class="card glow">
+        <h3>Model</h3>
+        <p>Random Forest</p>
+    </div>
+
+    <div class="card glow">
+        <h3>Accuracy</h3>
+        <p>~80%</p>
+    </div>
+</div>
+
+<!-- PREDICTION FORM -->
+<div class="form-box">
+    <h2>Predict Churn</h2>
+
+    <form action="/predict" method="post">
+        <input type="number" name="tenure" placeholder="Tenure Months" required>
+        <input type="number" name="monthly_charges" placeholder="Monthly Charges" required>
+        <input type="number" name="total_charges" placeholder="Total Charges" required>
+
+        <button type="submit">Predict</button>
+    </form>
+</div>
+
+<!-- CHART SECTION -->
+<div class="charts">
+    <img src="{{ url_for('static', filename='images/chart1.png') }}">
+    <img src="{{ url_for('static', filename='images/chart2.png') }}">
+    <img src="{{ url_for('static', filename='images/chart3.png') }}">
+</div>
+
+{% endblock %}
